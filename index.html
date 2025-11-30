@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects Inspired by Fernando Herrera's Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen">
+    <div class="container mx-auto px-4 py-16">
+        <div class="text-center mb-16">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in">
+                Projects Inspired by
+                <span class="bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text">
+                    Fernando Herrera's Course
+                </span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                A collection of projects built while learning and growing as a developer
+            </p>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="max-w-4xl mx-auto space-y-4">
+            <!-- Project Card Template -->
+            <a href="./001-.blackjack/" class="block group">
+                <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/50">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-semibold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                                BlackJack Games
+                            </h3>
+                            <p class="text-gray-400">I designed the logic for managing the deck, the CPU/player turns, and the decision algorithm for determining the winner based on proximity to the value 21.</p>
+                        </div>
+                        <svg class="w-6 h-6 text-purple-400 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-16">
+            <p class="text-gray-400">
+                Built with 💜 while learning from Fernando Herrera
+            </p>
+        </div>
+    </div>
+
+    <style>
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in {
+            animation: fade-in 1s ease-out;
+        }
+    </style>
+</body>
+</html>
