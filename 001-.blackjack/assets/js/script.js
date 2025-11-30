@@ -37,7 +37,7 @@ let score = {
 
 for (let typeCard of Object.values(TYPE_CARD)) {
   for (let valueCard of Object.values(VALUE_CARD)) {
-    cards.push(`assets/img/${valueCard}${typeCard}`)
+    cards.push(`./assets/img/${valueCard}${typeCard}`)
   }
 }
 
@@ -124,7 +124,7 @@ const playerDevice = () => {
 }
 
 const getScoreByImg = (urlImg) => {
-  const img = urlImg.split('/')[2]
+  const img = urlImg.split('/')[3]
   const length = img.length
   const currentString = img.slice(0, length - 1)
 
