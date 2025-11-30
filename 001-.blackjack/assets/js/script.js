@@ -78,7 +78,11 @@ const winnerAnnouncement = () => {
     return
   }
 
-  if ((score.player > 21 && score.device <= 21) || (score.device - 21) < (score.player - 21) ) {
+  if (
+      (score.player > 21 && score.device <= 21) || 
+      !(score.device > 21) &&
+      (21 - score.device) < (21 - score.player) 
+    ) {
     $winner.classList.remove('hidden')
     $winner.classList.add('text-pink-300')
     $winner.innerHTML = 'WIN DEVICE'
