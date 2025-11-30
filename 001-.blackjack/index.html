@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlackJack</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-slate-950 text-white p-2 min-h-screen">
+  <header class="flex justify-center items-end gap-2 mb-4">
+    <h1 class="text-5xl font-bold text-center">
+      BlackJack
+    </h1>
+    <button class="btn-new-game bg-amber-500 text-xl font-bold px-4 py-1 rounded-md h-fit cursor-pointer ring-amber-500/50 hover:ring-4 active:scale-95">
+      New Game
+    </button>
+  </header>
+
+  <p class="winner text-5xl text-center font-bold hidden">WIN PLAYER</p>
+
+  <main class="max-w-[800px] mx-auto space-y-4">
+    <article>
+      <header class="flex justify-between items-center">
+        <h2 class="text-3xl mb-2">
+          Device
+          <span class="device-score text-sm bg-indigo-300/20 border border-indigo-100 px-2 py-1 rounded-md font-bold"><strong>score:</strong> <span>?</span></span>
+        </h2>
+      </header>
+      <section class="device-desktop flex px-6 py-4 pl-38 bg-slate-800 rounded-md">
+        <div class="rounded-lg bg-slate-600 h-80 w-52 ring -ml-32"></div>
+        <div class="rounded-lg bg-slate-600 h-80 w-52 ring -ml-32"></div>
+      </section>
+    </article>
+
+    <article>
+      <header class="flex justify-between items-center">
+        <h2 class="text-3xl mb-2">
+          Player 
+          <span class="player-score text-sm bg-indigo-300/20 border border-indigo-100 px-2 py-1 rounded-md font-bold"><strong>score:</strong> <span>0</span></span>
+        </h2>
+        <div>
+          <button class="btn-player-add-card bg-cyan-500 px-4 py-1 rounded-md h-fit cursor-pointer ring-cyan-500/50 hover:ring-4 active:scale-95 disabled:opacity-50">Add</button>
+          <button class="btn-player-ready bg-blue-600 px-4 py-1 rounded-md h-fit cursor-pointer ring-blue-500/50 hover:ring-4 active:scale-95 disabled:opacity-50">Ready</button>
+        </div>
+      </header>
+      <section class="player-desktop flex px-6 pl-38 py-4 bg-slate-800 rounded-md h-[352px]"></section>
+    </article>
+  </main>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/game.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
