@@ -1,3 +1,6 @@
+const WIN_SCORE = 21
+const MIN_SCORE_DEVICE = 16
+
 const TYPE_CARD = {
   SPADE:    'S',
   HEART:    'H',
@@ -71,7 +74,7 @@ const btnsPlayerDisabled = (idDisabled) => {
 const winnerAnnouncement = () => {
   $winner.classList.remove('text-blue-300','text-pink-300','text-emerald-300')
 
-  if (score.device > 21 && score.player > 21) {
+  if (score.device > WIN_SCORE && score.player > WIN_SCORE) {
     $winner.classList.remove('hidden')
     $winner.classList.add('text-blue-300')
     $winner.innerHTML = 'NO WINNER'
@@ -79,9 +82,9 @@ const winnerAnnouncement = () => {
   }
 
   if (
-      (score.player > 21 && score.device <= 21) || 
-      !(score.device > 21) &&
-      (21 - score.device) < (21 - score.player) 
+      (score.player > WIN_SCORE && score.device <= WIN_SCORE) || 
+      !(score.device > WIN_SCORE) &&
+      (WIN_SCORE - score.device) < (WIN_SCORE - score.player) 
     ) {
     $winner.classList.remove('hidden')
     $winner.classList.add('text-pink-300')
@@ -98,28 +101,31 @@ const playerDevice = () => {
   btnsPlayerDisabled(true)
   const { device } = game.getAll()
   let deviceHtml = ''
-  let total = 0
+  let totalDevice = 0
   
   device.forEach(d => {
-    total += getScoreByImg(d)
+    totalDevice += getScoreByImg(d)
     deviceHtml += `
       <img src="${d}.png" class="rounded-lg h-80 w-52 -ml-32" alt="${d}">
     `
   })
 
-  if (total < 21 && score.player > 21) {
+  if ( 
+      (score.player <= WIN_SCORE && score.player > totalDevice) || 
+      (totalDevice < MIN_SCORE_DEVICE)
+    ) {
     do {
       game.gameDevice()
       const { device: list } = game.getAll()
       const lastCard = list[list.length - 1]
-      total += getScoreByImg(lastCard)
+      totalDevice += getScoreByImg(lastCard)
       deviceHtml += `
         <img src="${lastCard}.png" class="rounded-lg h-80 w-52 -ml-32" alt="${lastCard}">
       `
-    } while (total < 21)
+    } while (totalDevice < MIN_SCORE_DEVICE || (score.player <= WIN_SCORE && score.player > totalDevice))
   }
 
-  score.device = total
+  score.device = totalDevice
 
   $deviceScore.innerHTML = score.device
   $devicePesktop.innerHTML = deviceHtml
@@ -148,7 +154,6 @@ $btnNewGame.addEventListener('click', () => {
   score.player = 0
 
   const resutl = game.getAll()
-  console.log(resutl)
 
   $deviceScore.innerHTML = score.device
   $playerScore.innerHTML = '?'
@@ -167,7 +172,7 @@ $btnPlayerAdd.addEventListener('click', () => {
     <img src="${lastCard}.png" class="rounded-lg h-80 w-52 -ml-32" alt="${lastCard}">
   `)
 
-  if (score.player >= 21) {
+  if (score.player >= WIN_SCORE) {
     playerDevice()
   }
 })
